@@ -167,7 +167,7 @@ function ch_deploy_retroarch {
 function ch_printusage {
   echo "** Usage:"
   echo "\tchuardeploy.sh all\tDeploy everything"
-  echo "\tchuardeploy.sh <component>\tInstall specific component."
+  echo "\tchuardeploy.sh <component>\tInstall specific component. Not yet implemented."
   echo "\tchuardeploy.sh -h\tThis help."
 }
 
@@ -179,14 +179,16 @@ case $1 in
     ch_printusage
 	exit 0
 	;;
+  "all")
+    ch_deploy_prepare
+    ch_deploy_sdl2
+    ch_deploy_sfmlpi
+    ch_deploy_ffmpeg
+    ch_deploy_attract
+    ch_deploy_retroarch
+    ;;
   *)
     ch_printusage
 	exit 1
 	;;
 esac
-ch_deploy_prepare
-ch_deploy_sdl2
-ch_deploy_sfmlpi
-ch_deploy_ffmpeg
-ch_deploy_attract
-ch_deploy_retroarch
